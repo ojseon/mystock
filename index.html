@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Chart Explorer</title>
+    <!-- 구글 폰트 추가 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 200px; /* max-width 값을 줄이거나 필요에 따라 더 작게 설정 */
+            margin: 0; /* 화면의 왼쪽에 배치 */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .group-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 1px;
+            margin-top: 2px;
+            margin-bottom: 1px;
+        }
+
+        .stock-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .stock-list li {
+            margin-bottom: 1px;
+        }
+
+        .stock-list a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1em;
+            padding: 2px 3px;
+            display: block;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .stock-list a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .ratio-buttons {
+            margin-top: 30px;
+            text-align: left; /* 왼쪽 정렬 */
+        }
+
+        .ratio-buttons label {
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        .ratio-buttons button {
+            margin-right: 5px;
+            padding: 2px 4px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+        }
+
+        .ratio-buttons button.selected {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #0056b3;
+        }
+
+        .ratio-buttons button:hover {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Chart Explorer</h1>
+        <div class="stock-list">
+            <div class="group-title">Maps</div>
+            <ul>
+                <li><a href="#" onclick="openMenu('file:///Users/seonohjong/Library/Mobile%20Documents/com~apple~CloudDocs/MyChartFlorer/MyChartFlorer.html#')">왼쪽창 열기</a></li>
+                <li><a href="#" onclick="openChart('https://us.cnn.com/markets/fear-and-greed')">Fear & Greed</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/map.ashx?t=sec_all')">MAP</a> <a href="#" onclick="openChart('https://finviz.com/map.ashx?t=sec_all&st=fpe')">FPE</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/map.ashx?t=sec_all&st=pe')">PE</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/map.ashx?t=etf')">ETF</a></li>
+            </ul>
+
+            <div class="group-title">주력동업기업</div>
+            <ul>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=NVDA&ty=c&p=d&b=1')">NVDA</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=QQQ&ty=c&p=d&b=1')">QQQ</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=MSFT&ty=c&p=d&b=1')">MSFT</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=ARM&ty=c&p=d&b=1')">ARM</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=AAPL&ty=c&p=d&b=1')">AAPL</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=SMH&ty=c&p=d&b=1')">SMH</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=AMGN&ty=c&p=d&b=1')">AMGN</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=TSM&ty=c&p=d&b=1')">TSM</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=SPY&ty=c&p=d&b=1')">SPY</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=PLTR&ty=c&p=d&b=1')">PLTR</a></li>
+            </ul>
+
+            <div class="group-title">주력후보1</div>
+            <ul>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=TSLA&ty=c&p=d&b=1')">TSLA</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=LLY&ty=c&p=d&b=1')">LLY</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=META&ty=c&p=d&b=1')">META</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=GOOGL&ty=c&p=d&b=1')">GOOGL</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=AMZN&ty=c&p=d&b=1')">AMZN</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=QCOM&ty=c&p=d&b=1')">QCOM</a></li>
+            </ul>
+
+            <div class="group-title">참고</div>
+            <ul>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=SMCI&ty=c&p=d&b=1')">SMCI</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=SOUN&ty=c&p=d&b=1')">SOUN</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=NVDL&ty=c&p=d&b=1')">NVDL</a></li>
+            </ul>
+
+            <div class="group-title">국내동업기업</div>
+            <ul>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=012450')">한화에어로스페이스</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=214150')">클래시스</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=003230')">삼양식품</a></li>
+            </ul>
+        </div>
+
+        <div class="ratio-buttons">
+            <label>새창위치</label>
+            <button onclick="setRatio(2, this)">2</button>
+            <button onclick="setRatio(3, this)" class="selected">3</button>
+            <button onclick="setRatio(4, this)">4</button>
+            <button onclick="setRatio(5, this)">5</button> <!-- 기본 선택값 -->
+            <button onclick="setRatio(6, this)">6</button>
+        </div>
+    </div>
+
+    <script>
+        var selectedRatio = 3; // 기본값
+
+        function setRatio(ratio, button) {
+            selectedRatio = ratio;
+
+            // 모든 버튼의 선택 클래스 제거
+            var buttons = document.querySelectorAll('.ratio-buttons button');
+            buttons.forEach(function(btn) {
+                btn.classList.remove('selected');
+            });
+
+            // 클릭된 버튼에 선택 클래스 추가
+            button.classList.add('selected');
+        }
+
+        function openMenu(url) {
+            // 화면 크기 계산
+            var screenWidth = window.screen.width;
+            var screenHeight = window.screen.height;
+
+            // 새 창의 크기 및 위치 계산: 나머지 부분을 차지
+            var newWidth = 250;
+            var newLeft = 0;
+            var top = 0;
+
+            // 새 창 열기
+            // window.open(url, '_blank', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
+            window.open(url, 'lm1', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
+        }
+
+        function openChart(url) {
+            // 화면 크기 계산
+            var screenWidth = window.screen.width;
+            var screenHeight = window.screen.height;
+
+            // 새 창의 크기 및 위치 계산: 나머지 부분을 차지
+            var newWidth = screenWidth * (selectedRatio - 1) / selectedRatio;
+            var newLeft = screenWidth - newWidth;
+            var top = 0;
+
+            // 새 창 열기
+            // window.open(url, '_blank', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
+            window.open(url, 'gr1', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
+        }
+    </script>
+</body>
+</html>
