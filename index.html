@@ -204,14 +204,14 @@
             <label>새창위치</label>
             <button onclick="setRatio(2, this)">2</button>
             <button onclick="setRatio(3, this)">3</button>
-            <button onclick="setRatio(4, this)">4</button>
-            <button onclick="setRatio(5, this)" class="selected">5</button> <!-- 기본 선택값 -->
+            <button onclick="setRatio(5, this)" class="selected">4</button> <!-- 기본 선택값 -->
+            <button onclick="setRatio(4, this)">5</button>
             <button onclick="setRatio(6, this)">6</button>
         </div>
     </div>
 
     <script>
-        var selectedRatio = 5; // 기본값
+        var selectedRatio = 4; // 기본값
 
         function setRatio(ratio, button) {
             selectedRatio = ratio;
@@ -232,7 +232,7 @@
             var screenHeight = window.screen.height;
 
             // 새 창의 크기 및 위치 계산: 나머지 부분을 차지
-            var newWidth = 250;
+            var newWidth = 350;
             var newLeft = 0;
             var top = 0;
 
