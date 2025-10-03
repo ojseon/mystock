@@ -116,7 +116,7 @@
                 <li><a href="#" onclick="openChart('https://finviz.com/map.ashx?t=sec_all')">MAP</a></li>
                 
                 <li><a href="#" onclick="openChart('https://www.cnbc.com')">CNBC</a>
-                    <a href="#" onclick="openChart('https://www.cnbc.com/watchlist/#!/watchlist/2773881')">(P)</a></li>
+                    <a href="#" onclick="openChart0('https://www.cnbc.com/watchlist/#!/watchlist/2773881')">(P)</a></li>
                 <li><a href="#" onclick="openChart('https://finance.yahoo.com/')">Yahoo.F</a>
                     <a href="#" onclick="openChart('https://finance.yahoo.com/portfolio/p_0/view/view_0')">(P)</a></li>
                 
@@ -272,6 +272,21 @@
             // 새 창 열기
             // window.open(url, '_blank', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
             window.open(url, 'lm1', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
+        }
+
+        function openChart0(url) {
+            // 화면 크기 계산
+            var screenWidth = window.screen.width;
+            var screenHeight = window.screen.height;
+
+            // 새 창의 크기 및 위치 계산: 나머지 부분을 차지
+            var newWidth = screenWidth * (selectedRatio - 1) / selectedRatio;
+            var newLeft = screenWidth - newWidth;
+            var top = 0;
+
+            // 새 창 열기
+            // window.open(url, '_blank', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
+            window.open(url, 'gr0', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
         }
 
         function openChart(url) {
