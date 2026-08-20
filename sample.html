@@ -117,7 +117,9 @@
                 <li><a href="#" onclick="openChart('https://www.cnbc.com/quotes/.KSVKOSPI')">(국내)</a></li>
                 <li><a href="#" onclick="openChart('https://finviz.com/map.ashx?t=sec_all')">MAP(해외)</a></li>
                 <li><a href="#" onclick="openChart('https://www.kospd.com/maps/1day')">(국내)</a></li>
-                <li><a href="#" id="study-rsi" onclick="openChart('https://elite.finviz.com/screener.ashx?v=171&ft=2&o=rsi')">RSI</a>
+
+                
+                <li><a href="#" id="study-rsi" RSI</a>
                     <a href="#" id="study-rsi-t" onclick="openChart('https://elite.finviz.com/screener.ashx?v=351&ft=2&o=rsi')">(T)</a></li>
                 
                 <li><a href="#" onclick="openChart('https://companiesmarketcap.com/?utm_source=chatgpt.com#google_vignette')">세계시총</a>
@@ -196,7 +198,7 @@
         // [설정] 여기서 관심 종목 목록을 나열하면 자동 반영됩니다.
         // =========================================================
 //        const foreignStocks = "GOOGL,TSM,SKHY,SNDK,MRVL,NVDA,MU,AMZN,META,MSFT,PLTR,TSLA,SPCX,AAPL,AVGO,QQQ,SPY,SMH,EWY";
-        const foreignStocks = "GOOGL,TSM,SKHY,SNDK,MRVL";
+        const foreignStocks = "GOOGL,TSM,SKHY,SNDK,MRVL,NVDA,MU,AMZN,META,MSFT";
 
         function initForeignStocks() {
             const stockArray = foreignStocks.split(',').map(s => s.trim()).filter(Boolean);
