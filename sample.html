@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     <style>
         body { font-family: 'Roboto', sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 20px; }
-        .container { max-width: 300px; margin: 0; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        .container { max-width: 300px; margin: 0; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         h1 { font-weight: 700; color: #333; margin-bottom: 2px; }
         .group-title { font-weight: 700; color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 1px; margin-top: 2px; margin-bottom: 1px; }
         .stock-list ul { list-style-type: none; padding: 0; }
         .stock-list li { display: inline-block; margin-right: 10px; margin-bottom: 1px; }
-        .stock-list a { text-decoration: none; color: #333; font-weight: 500; font-size: 1em; padding: 2px 3px; display: inline-block; border-radius: 4px; transition: background-color 0.3s ease, color 0.3s ease; }
+        .stock-list a { text-decoration: none; color: #333; font-weight: 500; font-size: 1em; padding: 2px 3px; display: inline-block; border-radius: 4px; transition: background-color 0.3s, color 0.3s; }
         .stock-list a:hover { background-color: #007bff; color: #fff; }
         .ratio-buttons { margin-top: 30px; text-align: left; }
         .ratio-buttons label { font-size: 1.1em; font-weight: 500; margin-right: 10px; }
-        .ratio-buttons button { margin-right: 5px; padding: 2px 4px; font-size: 16px; cursor: pointer; background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease; }
+        .ratio-buttons button { margin-right: 5px; padding: 2px 4px; font-size: 16px; cursor: pointer; background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; transition: background-color 0.3s, color 0.3s, border 0.3s; }
         .ratio-buttons button.selected, .ratio-buttons button:hover { background-color: #007bff; color: white; border: 1px solid #0056b3; }
     </style>
 </head>
@@ -50,43 +50,44 @@
 
     <script>
         // =========================================================
-        // [설정 1] 국내 관심 종목 목록 (종목명, 6자리 종목코드)
+        // 1. 사용자 설정 데이터 (종목 관리)
         // =========================================================
+
+        // [국내 주식] 6자리 종목코드, 종목명
         const koreanStocks = [
-            { name: "KODEX200", code: "069500" },
-            { name: "SK하이닉스", code: "000660" },
-            { name: "삼성전자", code: "005930" },
-            { name: "삼성생명", code: "032830" },
-            { name: "삼양식품", code: "003230" },
-            { name: "한화에어로", code: "012450" },
-            { name: "LIG넥스원", code: "079550" },
-            { name: "삼성전기", code: "009150" },
-            { name: "삼성증권", code: "016360" },
-            { name: "SK스퀘어", code: "402340" },
-            { name: "현대차", code: "005380" },
-            { name: "현대모비스", code: "012330" },
-            { name: "SK텔레콤", code: "017670" }
+            { code: "069500", name: "KODEX200" },
+            { code: "000660", name: "SK하이닉스" },
+            { code: "005930", name: "삼성전자" },
+            { code: "032830", name: "삼성생명" },
+            { code: "003230", name: "삼양식품" },
+            { code: "012450", name: "한화에어로" },
+            { code: "079550", name: "LIG넥스원" },
+            { code: "009150", name: "삼성전기" },
+            { code: "016360", name: "삼성증권" },
+            { code: "402340", name: "SK스퀘어" },
+            { code: "005380", name: "현대차" },
+            { code: "012330", name: "현대모비스" },
+            { code: "017670", name: "SK텔레콤" }
         ];
 
-        // =========================================================
-        // [설정 2] 해외 관심 종목 목록 (티커 나열)
-        // =========================================================
+        // [해외 주식] 티커 목록 (쉼표 구분)
         const foreignStocks = "GOOGL,TSM,SKHY,SNDK,MRVL,NVDA,MU,AMZN,META,MSFT,PLTR,TSLA,SPCX,AAPL,AVGO,QQQ,SPY,SMH,EWY";
 
-        // =========================================================
-        // [설정 3] 기타 관심 종목 목록 (티커 나열)
-        // =========================================================
+        // [기타 주식] 티커 목록 (쉼표 구분)
         const etcStocks = "LEU,MP,IONQ,QBTS,SMR,CBRS";
 
 
-        // 1. 공부 그룹 동적 생성
+        // =========================================================
+        // 2. 화면 동적 생성 함수
+        // =========================================================
+
+        // 공부 그룹 동적 생성
         function initStudyLinks() {
             const listUl = document.getElementById('study-link-list');
-
-            const studyRsiUrl = `https://elite.finviz.com/screener.ashx?v=171&ft=2&t=${foreignStocks}&o=rsi`;
+            const studyRsiUrl  = `https://elite.finviz.com/screener.ashx?v=171&ft=2&t=${foreignStocks}&o=rsi`;
             const studyRsiTUrl = `https://elite.finviz.com/screener.ashx?v=351&ft=2&t=${foreignStocks}&o=rsi`;
 
-            let htmlContent = `
+            listUl.innerHTML = `
                 <li><a href="#" onclick="openChart('https://contents.premium.naver.com/hsacademy/hsacademy1')">아카데미</a></li>
                 <li><a href="#" onclick="openChart('https://us.cnn.com/markets/fear-and-greed')">F&G</a></li>
                 <li><a href="#" onclick="openChart('https://www.cnbc.com/quotes/.VIX')">VIX</a></li>
@@ -104,14 +105,11 @@
                 <li><a href="#" onclick="openChart('https://github.com/ojseon/mystock')">GitHub</a></li>
                 <li><a href="#" onclick="openMenu('https://ojseon.github.io/mystock/#')">왼쪽창열기</a></li>
             `;
-
-            listUl.innerHTML = htmlContent;
         }
 
-        // 2. 국내 주식 목록 동적 생성
+        // 국내 주식 목록 동적 생성
         function initKoreanStocks() {
             const listUl = document.getElementById('korean-stock-list');
-
             let htmlContent = `
                 <li><a href="#" onclick="openChart('https://finance.naver.com/sise/')">국내</a></li>
                 <li><a href="#" onclick="openChart('https://finance.naver.com/sise/sise_market_sum.naver')">시총순위</a></li>
@@ -129,11 +127,10 @@
             listUl.innerHTML = htmlContent;
         }
 
-        // 3. 해외 주식 목록 동적 생성
+        // 해외 주식 목록 동적 생성
         function initForeignStocks() {
             const stockArray = foreignStocks.split(',').map(s => s.trim()).filter(Boolean);
             const listUl = document.getElementById('foreign-stock-list');
-
             let htmlContent = `
                 <li><a href="#" onclick="openChart('https://finviz.com/')">종합</a></li>
                 <li><a href="#" onclick="openChart('https://finance.naver.com/world/')">해외</a></li>
@@ -150,11 +147,10 @@
             document.getElementById('foreign-rsi').setAttribute('onclick', `openChart('${foreignRsiUrl}')`);
         }
 
-        // 4. 기타 주식 목록 동적 생성
+        // 기타 주식 목록 동적 생성
         function initEtcStocks() {
             const stockArray = etcStocks.split(',').map(s => s.trim()).filter(Boolean);
             const listUl = document.getElementById('etc-stock-list');
-
             let htmlContent = "";
 
             stockArray.forEach(ticker => {
@@ -170,56 +166,47 @@
             document.getElementById('etc-rsi').setAttribute('onclick', `openChart('${etcRsiUrl}')`);
         }
 
-        // 페이지 로드시 초기화
+
+        // =========================================================
+        // 3. 창 제어 및 이벤트 처리
+        // =========================================================
+        var selectedRatio = 4; // 기본 창 비율
+
+        // 새 창 옵션 계산 공통 함수
+        function getWindowFeatures(ratio) {
+            const screenWidth = window.screen.width;
+            const screenHeight = window.screen.height;
+            const newWidth = screenWidth * (ratio - 1) / ratio;
+            const newLeft = screenWidth - newWidth;
+            return `width=${newWidth},height=${screenHeight},left=${newLeft},top=0`;
+        }
+
+        function setRatio(ratio, button) {
+            selectedRatio = ratio;
+            document.querySelectorAll('.ratio-buttons button').forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        }
+
+        function openMenu(url) {
+            const screenHeight = window.screen.height;
+            window.open(url, 'lm1', `width=350,height=${screenHeight},left=0,top=0`);
+        }
+
+        function openChart0(url) {
+            window.open(url, 'gr0', getWindowFeatures(selectedRatio));
+        }
+
+        function openChart(url) {
+            window.open(url, 'gr1', getWindowFeatures(selectedRatio));
+        }
+
+        // DOM 로드 완료 시 이벤트 초기화
         window.addEventListener('DOMContentLoaded', () => {
             initStudyLinks();
             initKoreanStocks();
             initForeignStocks();
             initEtcStocks();
         });
-
-        var selectedRatio = 4; // 기본 비율 설정값
-
-        function setRatio(ratio, button) {
-            selectedRatio = ratio;
-
-            var buttons = document.querySelectorAll('.ratio-buttons button');
-            buttons.forEach(function(btn) {
-                btn.classList.remove('selected');
-            });
-
-            button.classList.add('selected');
-        }
-
-        function openMenu(url) {
-            var screenWidth = window.screen.width;
-            var screenHeight = window.screen.height;
-
-            var newWidth = 350;
-            var newLeft = 0;
-
-            window.open(url, 'lm1', `width=${newWidth},height=${screenHeight},left=${newLeft},top=0`);
-        }
-
-        function openChart0(url) {
-            var screenWidth = window.screen.width;
-            var screenHeight = window.screen.height;
-
-            var newWidth = screenWidth * (selectedRatio - 1) / selectedRatio;
-            var newLeft = screenWidth - newWidth;
-
-            window.open(url, 'gr0', `width=${newWidth},height=${screenHeight},left=${newLeft},top=0`);
-        }
-
-        function openChart(url) {
-            var screenWidth = window.screen.width;
-            var screenHeight = window.screen.height;
-
-            var newWidth = screenWidth * (selectedRatio - 1) / selectedRatio;
-            var newLeft = screenWidth - newWidth;
-
-            window.open(url, 'gr1', `width=${newWidth},height=${screenHeight},left=${newLeft},top=0`);
-        }
     </script>
 </body>
 </html>
