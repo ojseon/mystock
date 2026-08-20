@@ -31,10 +31,10 @@
             <div class="group-title">국내동업기업<a href="#" onclick="openChart('https://kr.tradingview.com/screener/SGTc8Yty/?utm_source=chatgpt.com')">RSI</a></div>
             <ul id="korean-stock-list"></ul>
 
-            <div class="group-title">해외동업기업<a href="#" id="foreign-rsi" onclick="openChart('https://elite.finviz.com/screener.ashx?v=171&ft=2&o=rsi')">RSI</a></div>
+            <div class="group-title">해외동업기업<a href="#" id="foreign-rsi">RSI</a></div>
             <ul id="foreign-stock-list"></ul>
 
-            <div class="group-title">기타<a href="#" id="etc-rsi" onclick="openChart('https://elite.finviz.com/screener.ashx?v=171&ft=2&o=rsi')">RSI</a></div>
+            <div class="group-title">기타<a href="#" id="etc-rsi">RSI</a></div>
             <ul id="etc-stock-list"></ul>
         </div>
 
@@ -94,10 +94,14 @@
                 <li><a href="#" onclick="openChart('https://www.cnbc.com/quotes/.KSVKOSPI')">(국내)</a></li>
                 <li><a href="#" onclick="openChart('https://finviz.com/map.ashx?t=sec_all')">MAP(해외)</a></li>
                 <li><a href="#" onclick="openChart('https://www.kospd.com/maps/1day')">(국내)</a></li>
+                
                 <li><a href="#" onclick="openChart('${studyRsiUrl}')">RSI</a> <a href="#" onclick="openChart('${studyRsiTUrl}')">(T)</a></li>
-                <li><a href="#" onclick="openChart('https://companiesmarketcap.com/?utm_source=chatgpt.com#google_vignette')">세계시총</a> <a href="#" onclick="openChart0('https://www.tradingview.com/markets/world-stocks/worlds-largest-companies/?utm_source=chatgpt.com')">(2)</a></li>
+                
+                <li><a href="#" onclick="openChart('https://companiesmarketcap.com/?utm_source=chatgpt.com#google_vignette')">세계시총</a>
+                    <a href="#" onclick="openChart0('https://www.tradingview.com/markets/world-stocks/worlds-largest-companies/?utm_source=chatgpt.com')">(2)</a></li>
                 <li><a href="#" onclick="openChart('https://www.cnbc.com')">CNBC</a> <a href="#" onclick="openChart0('https://www.cnbc.com/watchlist/#!/watchlist/2773881')">(P)</a></li>
-                <li><a href="#" onclick="openChart('https://finance.yahoo.com/')">Yahoo.F</a> <a href="#" onclick="openChart('https://finance.yahoo.com/portfolio/p_0/view/view_0')">(해외)</a> <a href="#" onclick="openChart('https://finance.yahoo.com/portfolio/p_1/view/view_1')">(국내)</a></li>
+                <li><a href="#" onclick="openChart('https://finance.yahoo.com/')">Yahoo.F</a> <a href="#" onclick="openChart('https://finance.yahoo.com/portfolio/p_0/view/view_0')">(해외)</a>
+                    <a href="#" onclick="openChart('https://finance.yahoo.com/portfolio/p_1/view/view_1')">(국내)</a></li>
                 <li><a href="#" onclick="openChart('https://kr.investing.com/portfolio/?portfolioID=ZWE2ZTRlNmpmOWpvMmlhYA%3D%3D')">INVST</a></li>
                 <li><a href="#" onclick="openChart('https://www.investing.com/currencies/usd-krw')">환율</a></li>
                 <li><a href="#" onclick="openChart('https://www.cnbc.com/quotes/@ND.1')">나스닥선물</a></li>
