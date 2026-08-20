@@ -108,10 +108,76 @@
     <div class="container">
         <h1>100억 부자!</h1>
         <div class="stock-list">
-            <div class="group-title">관심종목<a href="#" onclick="openChart('https://elite.finviz.com/screener.ashx?v=171&ft=2&t=GOOGL,TSM&o=rsi')">RSI</a></div>
+            <div class="group-title">공부 (좋은주식, 항상 부등호 쳐보기!)</div>
             <ul>
-                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=LEU&ty=c&p=d&b=1')">GOOGL</a></li>
-                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=MP&ty=c&p=d&b=1')">TSM</a></li>
+                <li><a href="#" onclick="openChart('https://contents.premium.naver.com/hsacademy/hsacademy1')">아카데미</a></li>
+
+                <li><a href="#" onclick="openChart('https://us.cnn.com/markets/fear-and-greed')">F&G</a></li>
+                <li><a href="#" onclick="openChart('https://www.cnbc.com/quotes/.VIX')">VIX</a></li>
+                <li><a href="#" onclick="openChart('https://www.cnbc.com/quotes/.KSVKOSPI')">(국내)</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/map.ashx?t=sec_all')">MAP(해외)</a></li>
+                <li><a href="#" onclick="openChart('https://www.kospd.com/maps/1day')">(국내)</a></li>
+                <li><a href="#" id="study-rsi" onclick="openChart('https://elite.finviz.com/screener.ashx?v=171&ft=2&o=rsi')">RSI</a>
+                    <a href="#" id="study-rsi-t" onclick="openChart('https://elite.finviz.com/screener.ashx?v=351&ft=2&o=rsi')">(T)</a></li>
+                
+                <li><a href="#" onclick="openChart('https://companiesmarketcap.com/?utm_source=chatgpt.com#google_vignette')">세계시총</a>
+                    <a href="#" onclick="openChart0('https://www.tradingview.com/markets/world-stocks/worlds-largest-companies/?utm_source=chatgpt.com')">(2)</a></li>
+                <li><a href="#" onclick="openChart('https://www.cnbc.com')">CNBC</a>
+                    <a href="#" onclick="openChart0('https://www.cnbc.com/watchlist/#!/watchlist/2773881')">(P)</a></li>
+                <li><a href="#" onclick="openChart('https://finance.yahoo.com/')">Yahoo.F</a>
+                    <a href="#" onclick="openChart('https://finance.yahoo.com/portfolio/p_0/view/view_0')">(해외)</a></li>
+                    <a href="#" onclick="openChart('https://finance.yahoo.com/portfolio/p_1/view/view_1')">(국내)</a></li>
+                
+                <li><a href="#" onclick="openChart('https://kr.investing.com/portfolio/?portfolioID=ZWE2ZTRlNmpmOWpvMmlhYA%3D%3D')">INVST</a></li>
+                <li><a href="#" onclick="openChart('https://www.investing.com/currencies/usd-krw')">환율</a></li>
+                <li><a href="#" onclick="openChart('https://www.cnbc.com/quotes/@ND.1')">나스닥선물</a></li>
+
+                <li><a href="#" onclick="openChart('https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query=%EC%97%94%EB%B9%84%EB%94%94%EC%95%84')">N뉴스</a></li>
+                <li><a href="#" onclick="openChart('https://github.com/ojseon/mystock')">GitHub</a></li>
+                <li><a href="#" onclick="openMenu('https://ojseon.github.io/mystock/#')">왼쪽창열기</a></li>
+            </ul>
+            
+            <div class="group-title">국내동업기업<a href="#" onclick="openChart('https://kr.tradingview.com/screener/SGTc8Yty/?utm_source=chatgpt.com')">RSI</a></div>
+            <ul>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/sise/')">국내</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/sise/sise_market_sum.naver')">시총순위</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/mystock/itemList.naver')">(My)</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/sise/sise_index.naver?code=KOSDPI')">코스피</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/sise/sise_index.naver?code=KOSDAQ')">코스닥</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/sise/sise_index.naver?code=FUT')">선물</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=069500')">KODEX200</a></li>
+
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=000660')">SK하이닉스</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=005930')">삼성전자</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=032830')">삼성생명</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=003230')">삼양식품</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=012450')">한화에어로</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=079550')">LIG넥스원</a></li>
+
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=009150')">삼성전기</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=016360')">삼성증권</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=402340')">SK스퀘어</a></li>
+                
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=005380')">현대차</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=012330')">현대모비스</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/item/fchart.naver?code=017670')">SK텔레콤</a></li>                                
+            </ul>
+
+            <div class="group-title">해외동업기업<a href="#" id="foreign-rsi" onclick="openChart('https://elite.finviz.com/screener.ashx?v=171&ft=2&o=rsi')">RSI</a></div>
+            <ul id="foreign-stock-list">
+                <!-- 자바스크립트로 동적 생성되는 영역 -->
+            </ul>
+
+            <div class="group-title">기타<a href="#" onclick="openChart('https://elite.finviz.com/screener.ashx?v=171&ft=2&t=MRVL,KORU,SPCX,IONQ,LEU,EMR,,QBTS,SMR&o=rsi')">RSI</a></div>
+            <ul>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=LEU&ty=c&p=d&b=1')">LEU</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=MP&ty=c&p=d&b=1')">MP</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=IONQ&ty=c&p=d&b=1')">IONQ</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=QBTS&ty=c&p=d&b=1')">QBTS</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=SMR&ty=c&p=d&b=1')">SMR</a></li>
+                <li><a href="#" onclick="openChart('https://finviz.com/quote.ashx?t=CBRS&ty=c&p=d&b=1')">CBRS</a></li>
+                
+                <li><a href="#" onclick="openChart('https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC')">BTC/DOGE</a></li>
             </ul>
         </div>
 
@@ -126,6 +192,44 @@
     </div>
 
     <script>
+        // =========================================================
+        // [설정] 여기서 관심 종목 목록을 나열하면 자동 반영됩니다.
+        // =========================================================
+        const foreignStocks = "GOOGL,TSM,SKHY,SNDK,MRVL,NVDA,MU,AMZN,META,MSFT,PLTR,TSLA,SPCX,AAPL,AVGO,QQQ,SPY,SMH,EWY";
+
+        function initForeignStocks() {
+            const stockArray = foreignStocks.split(',').map(s => s.trim()).filter(Boolean);
+            const stockListUl = document.getElementById('foreign-stock-list');
+
+            // 기본 포함시킬 정적 고정 링크 (종합, 해외)
+            let htmlContent = `
+                <li><a href="#" onclick="openChart('https://finviz.com/')">종합</a></li>
+                <li><a href="#" onclick="openChart('https://finance.naver.com/world/')">해외</a></li>
+            `;
+
+            // 설정한 변수의 종목들을 순회하며 HTML 생성
+            stockArray.forEach(ticker => {
+                const url = `https://finviz.com/quote.ashx?t=${ticker}&ty=c&p=d&b=1`;
+                htmlContent += `<li><a href="#" onclick="openChart('${url}')">${ticker}</a></li>`;
+            });
+
+            stockListUl.innerHTML = htmlContent;
+
+            // 1. 공부 그룹의 RSI 링크에 자동 세팅
+            const studyRsiUrl = `https://elite.finviz.com/screener.ashx?v=171&ft=2&t=${foreignStocks}&o=rsi`;
+            const studyRsiTUrl = `https://elite.finviz.com/screener.ashx?v=351&ft=2&t=${foreignStocks}&o=rsi`;
+            
+            document.getElementById('study-rsi').setAttribute('onclick', `openChart('${studyRsiUrl}')`);
+            document.getElementById('study-rsi-t').setAttribute('onclick', `openChart('${studyRsiTUrl}')`);
+
+            // 2. 해외동업기업 그룹의 RSI 링크에 자동 세팅
+            const foreignRsiUrl = `https://elite.finviz.com/screener.ashx?v=171&ft=2&t=${foreignStocks}&o=rsi`;
+            document.getElementById('foreign-rsi').setAttribute('onclick', `openChart('${foreignRsiUrl}')`);
+        }
+
+        // 페이지 로드시 자동 실행
+        window.addEventListener('DOMContentLoaded', initForeignStocks);
+
         var selectedRatio = 4; // 기본값
 
         function setRatio(ratio, button) {
@@ -142,57 +246,44 @@
         }
 
         function openMenu(url) {
-            // 화면 크기 계산
             var screenWidth = window.screen.width;
             var screenHeight = window.screen.height;
 
-            // 새 창의 크기 및 위치 계산: 나머지 부분을 차지
             var newWidth = 350;
             var newLeft = 0;
             var top = 0;
 
-            // 새 창 열기
-            // window.open(url, '_blank', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
             window.open(url, 'lm1', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
         }
 
         function openChart0(url) {
-            // 화면 크기 계산
             var screenWidth = window.screen.width;
             var screenHeight = window.screen.height;
 
-            // 새 창의 크기 및 위치 계산: 나머지 부분을 차지
             var newWidth = screenWidth * (selectedRatio - 1) / selectedRatio;
             var newLeft = screenWidth - newWidth;
             var top = 0;
 
-            // 새 창 열기
-            // window.open(url, '_blank', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
             window.open(url, 'gr0', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
         }
 
         function openChart(url) {
-            // 화면 크기 계산
             var screenWidth = window.screen.width;
             var screenHeight = window.screen.height;
 
-            // 새 창의 크기 및 위치 계산: 나머지 부분을 차지
             var newWidth = screenWidth * (selectedRatio - 1) / selectedRatio;
             var newLeft = screenWidth - newWidth;
             var top = 0;
 
-            // 새 창 열기
-            // window.open(url, '_blank', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
             window.open(url, 'gr1', `width=${newWidth},height=${screenHeight},left=${newLeft},top=${top}`);
         }
 
         async function fetchStockPrice(symbol) {
-            // Yahoo Finance 비공식 API 예시 URL
             const apiUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?region=US&lang=en-US&includePrePost=false&interval=2m&range=1d`;
             try {
                 let response = await fetch(apiUrl);
                 let data = await response.json();
-                let price = data.chart.result[0].meta.regularMarketPrice; // 현재 주가
+                let price = data.chart.result[0].meta.regularMarketPrice;
                 return price;
             } catch (error) {
                 console.error('Error fetching stock data:', error);
