@@ -124,7 +124,8 @@
             `;
 
             koreanStocks.forEach(stock => {
-                const url = `https://finance.naver.com/item/fchart.naver?code=${stock.code}`;
+                const url = `https://stock.naver.com/domestic/stock/${stock.code}/price`;
+                // const url = `https://finance.naver.com/item/fchart.naver?code=${stock.code}`;
                 htmlContent += `<li><a href="#" onclick="openChart('${url}')">${stock.name}</a></li>`;
             });
 
