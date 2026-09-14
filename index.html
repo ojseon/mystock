@@ -103,8 +103,8 @@
                 
                 <li><a href="#" onclick="openChart('https://companiesmarketcap.com/?utm_source=chatgpt.com#google_vignette')">세계시총</a>
                     <a href="#" onclick="openChart0('https://www.tradingview.com/markets/world-stocks/worlds-largest-companies/?utm_source=chatgpt.com')">(2)</a></li>
-                <li><a href="#" onclick="openChart('https://www.cnbc.com')">CNBC</a> <a href="#" onclick="openChart0('https://www.cnbc.com/watchlist/#!/watchlist/2773881')">(P)</a></li>
-                <li><a href="#" onclick="openChart('https://finance.yahoo.com/')">Yahoo.F</a> <a href="#" onclick="openChart('https://finance.yahoo.com/portfolio/p_0/view/view_0')">(해외)</a>
+                <li><a href="#" onclick="openChart0('https://www.cnbc.com/watchlist/#!/watchlist/2773881')">CNBC</a></li>
+                <li><a href="#" onclick="openChart('https://finance.yahoo.com/portfolio/p_0/view/view_0')">Yahoo.F</a>
                     <a href="#" onclick="openChart('https://finance.yahoo.com/portfolio/p_1/view/view_1')">(국내)</a></li>
                 <li><a href="#" onclick="openChart('https://kr.investing.com/portfolio/?portfolioID=ZWE2ZTRlNmpmOWpvMmlhYA%3D%3D')">INVST</a></li>
                 <li><a href="#" onclick="openChart('https://www.investing.com/currencies/usd-krw')">환율</a></li>
@@ -128,8 +128,10 @@
             `;
 
             koreanStocks.forEach(stock => {
-                const url = `https://stock.naver.com/domestic/stock/${stock.code}/price`;
-                // const url = `https://finance.naver.com/item/fchart.naver?code=${stock.code}`;
+                // 숫자로만 이루어져 있으면 domestic, 아니면 worldstock 경로 지정
+                const category = /^\d+$/.test(stock.code) ? 'domestic' : 'worldstock';
+                const url = `https://stock.naver.com/${category}/stock/${stock.code}/price`;
+                
                 htmlContent += `<li><a href="#" onclick="openChart('${url}')">${stock.name}</a></li>`;
             });
 
